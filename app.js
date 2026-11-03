@@ -40,7 +40,7 @@ const safeUrl = (u) => (/^https:\/\//.test(u || "") ? u : CHAPTER_URL);
 
 // ---------- rendering ----------
 
-function eventCard(e, { past = false, label } = {}) {
+function eventCard(e, { past = false, label, featured = false } = {}) {
   const node = $("#tpl-event-card").content.firstElementChild.cloneNode(true);
   const { month, day, year } = dateParts(e);
   const link = $(".event-card-link", node);
@@ -55,6 +55,12 @@ function eventCard(e, { past = false, label } = {}) {
   const img = $(".event-media img", node);
   if (e.picture) img.src = e.picture;
   else $(".event-media", node).remove();
+  if (featured) {
+    node.classList.add("is-featured");
+    const cta = Object.assign(document.createElement("span"), { className: "btn btn-primary event-cta" });
+    cta.innerHTML = `Jetzt anmelden <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>`;
+    $(".event-body", node).append(cta);
+  }
   if (past) {
     node.classList.add("is-past");
     const badge = document.createElement("span");
@@ -72,31 +78,23 @@ function renderNext(events) {
   const past = events.filter((e) => !isUpcoming(e)).reverse();
 
   // Only upcoming events here; past ones live in their own section below.
-  // Free slots in the row get one "more coming" card instead of repeating old events.
+  // A single event becomes a full-width featured card instead of leaving empty slots.
   const shown = upcoming.slice(0, 3);
-  list.replaceChildren(...shown.map((e) => eventCard(e)));
-  if (shown.length < 3) list.append(comingSoonCard(3 - shown.length, shown.length === 0));
+  list.dataset.count = shown.length;
+  list.replaceChildren(...shown.map((e) => eventCard(e, { featured: shown.length === 1 })));
 
-  notice.hidden = true;
+  // One quiet line under the cards instead of a filler block.
+  notice.hidden = shown.length === 3;
+  notice.replaceChildren(
+    shown.length ? "Weitere Events folgen bald – " : "Gerade sind keine Events geplant – neue erscheinen hier automatisch. ",
+    Object.assign(document.createElement("a"), {
+      href: safeUrl(state.data.chapter.url),
+      target: "_blank",
+      rel: "noopener",
+      textContent: "Mitglied werden und nichts verpassen",
+    })
+  );
   list.setAttribute("aria-busy", "false");
-}
-
-function comingSoonCard(span, empty) {
-  const card = document.createElement("div");
-  card.className = "event-card coming-soon";
-  card.style.setProperty("--span", span);
-  card.innerHTML = `<svg class="icon icon-xl" aria-hidden="true"><use href="#i-calendar"/></svg>
-    <div><strong></strong><p>Neue Events erscheinen hier automatisch, sobald sie auf gdg.community.dev veröffentlicht sind.</p></div>`;
-  $("strong", card).textContent = empty ? "Gerade sind keine Events geplant" : "Weitere Events folgen bald";
-  const join = Object.assign(document.createElement("a"), {
-    className: "btn btn-outline btn-sm",
-    href: safeUrl(state.data.chapter.url),
-    target: "_blank",
-    rel: "noopener",
-    textContent: "Mitglied werden",
-  });
-  card.append(join);
-  return card;
 }
 
 const PAST_PREVIEW = 4;
