@@ -1,4 +1,5 @@
 import { loadAll, CHAPTER_URL } from "./lib/gdg.js";
+import { dateParts, timeRange, venue, isUpcoming, safeUrl } from "./lib/format.js";
 
 // Data flow: paint the bundled snapshot (data/gdg.json) right away, then fetch
 // live data from gdg.community.dev and re-render. New events published there
@@ -8,35 +9,6 @@ const $ = (sel, root = document) => root.querySelector(sel);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const state = { data: null, source: null, showAllPast: false };
-
-// ---------- formatting ----------
-
-const fmt = (iso, tz, opts) => new Intl.DateTimeFormat(opts.locale || "de-DE", { timeZone: tz, ...opts }).format(new Date(iso));
-
-function dateParts(e) {
-  return {
-    month: fmt(e.start_date, e.timezone, { locale: "en-US", month: "short" }).toUpperCase(),
-    day: fmt(e.start_date, e.timezone, { day: "numeric" }),
-    year: fmt(e.start_date, e.timezone, { year: "numeric" }),
-  };
-}
-
-function timeRange(e) {
-  const t = (iso) => fmt(iso, e.timezone, { hour: "2-digit", minute: "2-digit" });
-  return e.end_date ? `${t(e.start_date)} – ${t(e.end_date)}` : t(e.start_date);
-}
-
-function venue(e) {
-  if (e.is_virtual || e.audience_type === "VIRTUAL") return "Online";
-  const raw = e.venue_name || "";
-  const atUde = /university of duisburg[- ]essen|\bude\b/i.test(raw);
-  const room = raw.replace(/^room\s+/i, "").replace(/\s+at\s+university of duisburg[- ]essen/i, "").trim();
-  if (atUde || /^S[A-Z]-?\d|^R\d/i.test(room)) return `UDE, ${room}`;
-  return [room, e.venue_city].filter(Boolean).join(", ") || e.venue_city || "Essen";
-}
-
-const isUpcoming = (e, now = Date.now()) => Date.parse(e.end_date || e.start_date) >= now;
-const safeUrl = (u) => (/^https:\/\//.test(u || "") ? u : CHAPTER_URL);
 
 // ---------- rendering ----------
 

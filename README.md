@@ -14,7 +14,14 @@ Statische Website (HTML/CSS/JS, kein Build-Schritt) mit automatisch synchronisie
 3. **Automatisches Update & Deploy:** `.github/workflows/deploy.yml` läuft bei jedem Push und alle 6 Stunden, führt
    `scripts/update-events.mjs` aus, committet den Snapshot nur bei Änderungen und veröffentlicht die Seite auf GitHub Pages.
 
-Browser und Node nutzen denselben Loader: `lib/gdg.js`.
+Browser und Node nutzen denselben Loader: `lib/gdg.js`; die Anzeige-Helfer liegen in `lib/format.js`.
+
+## Versionen
+
+- `/` – Version 1 (deutsch, nah am ersten Mockup)
+- `/v2/` – Version 2 (englisch, großes Foto-Hero, Next-Event-Karte, Join-Banner)
+
+Beide nutzen dieselben Daten und dieselbe Automatik.
 
 ## Lokal starten
 
@@ -30,4 +37,4 @@ ist alles kostenlos und wartungsfrei.
 
 ## Credits
 
-Hero-Foto: Campus Essen, Schützenbahn – Arne Rensing / UDE, CC BY-SA 4.0 (Wikimedia Commons).
+Fotos (Wikimedia Commons, CC BY-SA 4.0): Campus Essen Schützenbahn und Cafeteria – Arne Rensing / UDE; v2-Hero – Wikimedia Foundation Photography Collection 2023.
