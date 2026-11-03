@@ -85,11 +85,11 @@
     </section>
 
     <!-- Next events (live) -->
-    <section class="section section-tight" id="next-events" aria-labelledby="next-title">
+    <section class="section section-tight" id="events" aria-labelledby="next-title">
       <div class="container">
         <div class="section-head">
           <h2 id="next-title">Next Events</h2>
-          <a class="link-arrow" href="#events">See all events <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="link-arrow" href="#past-events">Past events <svg class="icon"><use href="#i-arrow"/></svg></a>
         </div>
         <p class="notice" id="next-notice" hidden></p>
         <div class="event-grid" id="next-events-list" aria-live="polite" aria-busy="true">
@@ -140,17 +140,15 @@
       </div>
     </section>
 
-    <!-- All events -->
-    <section class="section" id="events" aria-labelledby="events-title">
+    <!-- Past events (only events that are over, so nothing repeats from "Next Events") -->
+    <section class="section" id="past-events" aria-labelledby="past-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="events-title">All Events</h2>
-          <div class="tabs" role="tablist" aria-label="Events filtern">
-            <button class="tab" role="tab" id="tab-upcoming" aria-selected="true" aria-controls="events-list" data-filter="upcoming">Upcoming <span class="count" data-count="upcoming">0</span></button>
-            <button class="tab" role="tab" id="tab-past" aria-selected="false" aria-controls="events-list" data-filter="past">Past <span class="count" data-count="past">0</span></button>
-          </div>
+          <h2 id="past-title">Past Events</h2>
+          <a class="link-arrow" href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">Auf gdg.community.dev <svg class="icon"><use href="#i-arrow"/></svg></a>
         </div>
-        <div class="event-list" id="events-list" role="tabpanel" aria-labelledby="tab-upcoming"></div>
+        <div class="event-list" id="past-events-list"></div>
+        <button class="btn btn-outline show-more" id="past-more" type="button" hidden>Alle vergangenen Events anzeigen</button>
         <p class="sync-info" id="sync-info"></p>
       </div>
     </section>

@@ -7,7 +7,7 @@ import { loadAll, CHAPTER_URL } from "./lib/gdg.js";
 const $ = (sel, root = document) => root.querySelector(sel);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const state = { data: null, source: null, filter: null };
+const state = { data: null, source: null, showAllPast: false };
 
 // ---------- formatting ----------
 
@@ -71,48 +71,43 @@ function renderNext(events) {
   const upcoming = events.filter((e) => isUpcoming(e));
   const past = events.filter((e) => !isUpcoming(e)).reverse();
 
-  // Always show three cards: upcoming first, topped up with the latest past ones.
+  // Only upcoming events here; past ones live in their own section below.
+  // Free slots in the row get one "more coming" card instead of repeating old events.
   const shown = upcoming.slice(0, 3);
-  list.replaceChildren(
-    ...shown.map((e) => eventCard(e)),
-    ...past.slice(0, 3 - shown.length).map((e) => eventCard(e, { past: true, label: "Vorbei" }))
-  );
+  list.replaceChildren(...shown.map((e) => eventCard(e)));
+  if (shown.length < 3) list.append(comingSoonCard(3 - shown.length, shown.length === 0));
 
-  notice.hidden = upcoming.length > 0;
-  if (!upcoming.length) {
-    notice.replaceChildren(
-      "Gerade sind keine neuen Events geplant – das nächste erscheint hier automatisch. Bis dahin: unsere letzten Events. ",
-      Object.assign(document.createElement("a"), { href: safeUrl(state.data.chapter.url), target: "_blank", rel: "noopener", textContent: "Mitglied werden & benachrichtigt bleiben" })
-    );
-  }
+  notice.hidden = true;
   list.setAttribute("aria-busy", "false");
 }
 
-function renderAll(events) {
-  const upcoming = events.filter((e) => isUpcoming(e));
-  const past = events.filter((e) => !isUpcoming(e)).reverse();
-  $('[data-count="upcoming"]').textContent = upcoming.length;
-  $('[data-count="past"]').textContent = past.length;
-
-  if (!state.filter) state.filter = upcoming.length ? "upcoming" : "past";
-  document.querySelectorAll(".tab").forEach((tab) => {
-    const active = tab.dataset.filter === state.filter;
-    tab.setAttribute("aria-selected", String(active));
-    tab.tabIndex = active ? 0 : -1;
-    if (active) $("#events-list").setAttribute("aria-labelledby", tab.id);
+function comingSoonCard(span, empty) {
+  const card = document.createElement("div");
+  card.className = "event-card coming-soon";
+  card.style.setProperty("--span", span);
+  card.innerHTML = `<svg class="icon icon-xl" aria-hidden="true"><use href="#i-calendar"/></svg>
+    <div><strong></strong><p>Neue Events erscheinen hier automatisch, sobald sie auf gdg.community.dev veröffentlicht sind.</p></div>`;
+  $("strong", card).textContent = empty ? "Gerade sind keine Events geplant" : "Weitere Events folgen bald";
+  const join = Object.assign(document.createElement("a"), {
+    className: "btn btn-outline btn-sm",
+    href: safeUrl(state.data.chapter.url),
+    target: "_blank",
+    rel: "noopener",
+    textContent: "Mitglied werden",
   });
+  card.append(join);
+  return card;
+}
 
-  const list = $("#events-list");
-  list.replaceChildren();
-  const items = state.filter === "upcoming" ? upcoming : past;
-  if (!items.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty-state";
-    empty.innerHTML = `<svg class="icon icon-xl" aria-hidden="true"><use href="#i-calendar"/></svg><p><strong>Noch keine neuen Events angekündigt.</strong><br>Sobald das Team ein Event auf gdg.community.dev veröffentlicht, erscheint es hier automatisch.</p>`;
-    list.append(empty);
-  } else {
-    items.forEach((e) => list.append(eventCard(e, { past: state.filter === "past" })));
-  }
+const PAST_PREVIEW = 4;
+
+function renderPast(events) {
+  const past = events.filter((e) => !isUpcoming(e)).reverse();
+  const items = state.showAllPast ? past : past.slice(0, PAST_PREVIEW);
+  $("#past-events-list").replaceChildren(...items.map((e) => eventCard(e, { past: true })));
+  const more = $("#past-more");
+  more.hidden = state.showAllPast || past.length <= PAST_PREVIEW;
+  more.textContent = `Alle ${past.length} vergangenen Events anzeigen`;
 }
 
 function renderGallery(events) {
@@ -154,7 +149,7 @@ function render() {
   const { data, source } = state;
   const { events, team, chapter } = data;
   renderNext(events);
-  renderAll(events);
+  renderPast(events);
   renderGallery(events);
   renderTeam(team);
 
@@ -193,20 +188,11 @@ function observeReveals() {
 
 // ---------- UI wiring ----------
 
-function wireTabs() {
-  const tabs = [...document.querySelectorAll(".tab")];
-  tabs.forEach((tab, i) => {
-    tab.addEventListener("click", () => {
-      state.filter = tab.dataset.filter;
-      renderAll(state.data.events);
-      observeReveals();
-    });
-    tab.addEventListener("keydown", (ev) => {
-      if (ev.key !== "ArrowRight" && ev.key !== "ArrowLeft") return;
-      const next = tabs[(i + (ev.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
-      next.focus();
-      next.click();
-    });
+function wirePastToggle() {
+  $("#past-more").addEventListener("click", () => {
+    state.showAllPast = true;
+    renderPast(state.data.events);
+    observeReveals();
   });
 }
 
@@ -228,7 +214,7 @@ function wireMenu() {
 
 async function boot() {
   $("#year").textContent = new Date().getFullYear();
-  wireTabs();
+  wirePastToggle();
   wireMenu();
 
   const snapshot = fetch("data/gdg.json")
