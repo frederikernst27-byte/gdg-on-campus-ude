@@ -1,0 +1,14 @@
+{
+  "name": "gdg-on-campus-ude",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GDG on Campus University of Duisburg-Essen website with auto-synced events",
+  "scripts": {
+    "update": "node scripts/update-events.mjs",
+    "dev": "npx --yes serve -l 5173 ."
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

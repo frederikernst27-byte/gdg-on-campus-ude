@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GDG on Campus – University of Duisburg-Essen</title>
+  <meta name="description" content="Google Developer Groups on Campus an der Universität Duisburg-Essen: Workshops, Talks und Community für Studierende, die gemeinsam programmieren und neue Technologien entdecken." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://gdg.community.dev" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M18 10 4 24l14 14' fill='none' stroke='%23EA4335' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='m30 10 14 14-14 14' fill='none' stroke='%2334A853' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- Inline SVG sprite: Lucide-style icons, 24px grid, 1.75 stroke -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5-10 4.5L2 9.5Z"/><path d="M6 11.5v4.5c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 9.5v5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c2.4 0 4.1 1.5 4.5 4.5"/></symbol>
+    <symbol id="i-grow" viewBox="0 0 24 24"><path d="M4 20v-5M9.5 20v-8M15 20v-6M20.5 20V9M3 11l6-5 4 3 8-6M16 3h5v5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  </svg>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="GDG on Campus UDE – Startseite">
+        <svg class="brand-mark" viewBox="0 0 64 40" aria-hidden="true">
+          <path d="M22 6 6 20" stroke="#EA4335"/><path d="m6 20 16 14" stroke="#4285F4"/>
+          <path d="m42 6 16 14" stroke="#34A853"/><path d="M58 20 42 34" stroke="#FBBC04"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-title">Google Developer Groups</span>
+          <span class="brand-sub">on Campus · UDE</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#resources">Resources</a>
+        <a class="btn btn-primary btn-sm nav-cta-mobile" href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">Join Community <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </nav>
+
+      <a class="btn btn-primary btn-sm header-cta" href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">
+        Join Community <svg class="icon"><use href="#i-arrow"/></svg>
+      </a>
+      <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menü öffnen">
+        <svg class="icon icon-lg"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/campus-essen.jpg" alt="" width="1600" height="900" fetchpriority="high" />
+      </div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">GDG on Campus –<br />University of Duisburg-Essen</h1>
+          <p class="tagline"><span class="c-blue">Build.</span> <span class="c-red">Learn.</span> <span class="c-green">Connect.</span></p>
+          <p class="lead">Eine Community für Studierende, die gemeinsam programmieren, neue Technologien entdecken und eigene Ideen verwirklichen wollen.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">Join the Community <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-outline btn-lg" href="#events">Explore Events</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next events (live) -->
+    <section class="section section-tight" id="next-events" aria-labelledby="next-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="next-title">Next Events</h2>
+          <a class="link-arrow" href="#events">See all events <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="notice" id="next-notice" hidden></p>
+        <div class="event-grid" id="next-events-list" aria-live="polite" aria-busy="true">
+          <div class="event-card skeleton" aria-hidden="true"></div>
+          <div class="event-card skeleton" aria-hidden="true"></div>
+          <div class="event-card skeleton" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What to expect -->
+    <section class="section section-tight" aria-labelledby="expect-title">
+      <div class="container">
+        <h2 id="expect-title">What to Expect</h2>
+        <ul class="expect-grid" role="list">
+          <li class="expect-item reveal">
+            <svg class="expect-icon"><use href="#i-cap"/></svg>
+            <div><h3>Learn</h3><p>Workshops zu KI, Webentwicklung und Cloud-Technologien.</p></div>
+          </li>
+          <li class="expect-item reveal">
+            <svg class="expect-icon"><use href="#i-code"/></svg>
+            <div><h3>Build</h3><p>Gemeinsam an Projekten arbeiten und eigene Ideen umsetzen.</p></div>
+          </li>
+          <li class="expect-item reveal">
+            <svg class="expect-icon"><use href="#i-users"/></svg>
+            <div><h3>Connect</h3><p>Andere Studierende, Entwickler und Unternehmen kennenlernen.</p></div>
+          </li>
+          <li class="expect-item reveal">
+            <svg class="expect-icon"><use href="#i-grow"/></svg>
+            <div><h3>Grow</h3><p>Technische Fähigkeiten verbessern und Erfahrungen sammeln.</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Community -->
+    <section class="section section-tight" aria-labelledby="community-title">
+      <div class="container community">
+        <div class="community-copy">
+          <h2 id="community-title">Our Community</h2>
+          <p class="muted">Your ideas. Your community. Your impact.</p>
+          <dl class="stats">
+            <div><dt>Mitglieder</dt><dd data-stat="members">170+</dd></div>
+            <div><dt>Events</dt><dd data-stat="events">–</dd></div>
+          </dl>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- All events -->
+    <section class="section" id="events" aria-labelledby="events-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="events-title">All Events</h2>
+          <div class="tabs" role="tablist" aria-label="Events filtern">
+            <button class="tab" role="tab" id="tab-upcoming" aria-selected="true" aria-controls="events-list" data-filter="upcoming">Upcoming <span class="count" data-count="upcoming">0</span></button>
+            <button class="tab" role="tab" id="tab-past" aria-selected="false" aria-controls="events-list" data-filter="past">Past <span class="count" data-count="past">0</span></button>
+          </div>
+        </div>
+        <div class="event-list" id="events-list" role="tabpanel" aria-labelledby="tab-upcoming"></div>
+        <p class="sync-info" id="sync-info"></p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-alt" id="about" aria-labelledby="about-title">
+      <div class="container about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">Student-led. Open for everyone.</h2>
+        </div>
+        <div class="about-copy">
+          <p>Google Developer Group on Campus ist eine studentische Community rund um <strong>Technologie, Weiterentwicklung und Austausch</strong>. Wir organisieren Events an der Universität Duisburg-Essen mit einem Ziel: euch zu helfen, euer technisches Wissen zu vertiefen und über den Hörsaal hinaus zu wachsen.</p>
+          <p>Wir treiben Projekte voran, unterstützen uns gegenseitig und übernehmen Verantwortung in unserer lokalen Community. Egal welches Erfahrungslevel – wir freuen uns, dich bei einem unserer Events zu sehen.</p>
+          <p class="disclaimer">GDG on Campus ist eine unabhängige Community und keine offizielle Vertretung von Google.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team (live) -->
+    <section class="section" id="team" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="team-title">Team</h2>
+          <a class="link-arrow" href="mailto:gdgoc-ude@googlegroups.com">Core Member werden <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <ul class="team-grid" id="team-list" role="list"></ul>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="section section-alt" id="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <h2 id="resources-title">Resources</h2>
+        <ul class="resource-grid" role="list">
+          <li><a class="resource-card" href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">
+            <span class="resource-icon c-bg-blue"><svg class="icon icon-lg"><use href="#i-calendar"/></svg></span>
+            <span><strong>Chapter-Seite</strong><span>Events anmelden &amp; Mitglied werden</span></span>
+            <svg class="icon resource-ext"><use href="#i-external"/></svg></a></li>
+          <li><a class="resource-card" href="https://tinyurl.com/gdg-link-stack" target="_blank" rel="noopener">
+            <span class="resource-icon c-bg-red"><svg class="icon icon-lg"><use href="#i-link"/></svg></span>
+            <span><strong>Link Stack</strong><span>Alle Links an einem Ort</span></span>
+            <svg class="icon resource-ext"><use href="#i-external"/></svg></a></li>
+          <li><a class="resource-card" href="https://www.instagram.com/gdg_ude/" target="_blank" rel="noopener">
+            <span class="resource-icon c-bg-yellow"><svg class="icon icon-lg"><use href="#i-insta"/></svg></span>
+            <span><strong>Instagram</strong><span>@gdg_ude</span></span>
+            <svg class="icon resource-ext"><use href="#i-external"/></svg></a></li>
+          <li><a class="resource-card" href="mailto:gdgoc-ude@googlegroups.com">
+            <span class="resource-icon c-bg-green"><svg class="icon icon-lg"><use href="#i-mail"/></svg></span>
+            <span><strong>Kontakt</strong><span>gdgoc-ude@googlegroups.com</span></span>
+            <svg class="icon resource-ext"><use href="#i-external"/></svg></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> GDG on Campus University of Duisburg-Essen</p>
+      <p class="muted small">Events werden automatisch von <a href="https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/" target="_blank" rel="noopener">gdg.community.dev</a> geladen. Foto: Campus Essen, Schützenbahn – Arne Rensing / UDE, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
+    </div>
+  </footer>
+
+  <template id="tpl-event-card">
+    <article class="event-card reveal">
+      <a class="event-card-link" href="#" target="_blank" rel="noopener">
+        <div class="date-badge"><span class="date-month"></span><span class="date-day"></span></div>
+        <div class="event-body">
+          <h3 class="event-title"></h3>
+          <p class="event-desc"></p>
+          <ul class="event-meta" role="list">
+            <li><svg class="icon"><use href="#i-clock"/></svg><span class="event-time"></span></li>
+            <li><svg class="icon"><use href="#i-pin"/></svg><span class="event-venue"></span></li>
+          </ul>
+        </div>
+        <div class="event-media"><img alt="" loading="lazy" width="250" height="250" /></div>
+      </a>
+    </article>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
