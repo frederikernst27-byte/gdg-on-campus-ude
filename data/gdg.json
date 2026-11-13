@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03T14:35:58.645Z",
+  "updated_at": "2026-11-13T23:08:01.087Z",
   "chapter": {
     "id": 3426,
     "title": "GDG on Campus University of Duisburg-Essen - Essen, Germany",
@@ -219,6 +219,26 @@
       "venue_address": "Schützenbahn 70",
       "venue_city": "Essen",
       "tags": []
+    },
+    {
+      "id": 135836,
+      "title": "Dev Fest",
+      "description_short": "Details will be published soon. Stay tuned!",
+      "start_date": "2026-12-17T13:00:42Z",
+      "end_date": "2026-12-17T17:00:42Z",
+      "timezone": "Europe/Berlin",
+      "audience_type": "IN_PERSON",
+      "is_virtual": false,
+      "picture": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/contentbuilder/GDG_Bevy_DefaultEventThumbnail_2_va1kAS9.png",
+      "url": "https://gdg.community.dev/events/details/google-gdg-on-campus-university-of-duisburg-essen-essen-germany-presents-dev-fest/",
+      "venue_name": "ZIM",
+      "venue_address": "70 Schützenbahn",
+      "venue_city": "Essen",
+      "tags": [
+        "Conference",
+        "DevFest",
+        "Tech Talk / Meetup"
+      ]
     }
   ]
 }
