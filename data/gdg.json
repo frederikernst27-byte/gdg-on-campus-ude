@@ -1,10 +1,10 @@
 {
-  "updated_at": "2026-11-19T15:02:10.087Z",
+  "updated_at": "2026-11-21T14:00:22.466Z",
   "chapter": {
     "id": 3426,
     "title": "GDG on Campus University of Duisburg-Essen - Essen, Germany",
     "url": "https://gdg.community.dev/gdg-on-campus-university-of-duisburg-essen-essen-germany/",
-    "members_count": 174,
+    "members_count": 175,
     "instagram_handle": "gdg_ude",
     "website": "https://tinyurl.com/gdg-link-stack"
   },
@@ -213,7 +213,7 @@
       "timezone": "Europe/Berlin",
       "audience_type": "IN_PERSON",
       "is_virtual": false,
-      "picture": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_AMxw1Y0",
+      "picture": "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_500,h_500,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/events/blob_XouGtvS",
       "url": "https://gdg.community.dev/events/details/google-gdg-on-campus-university-of-duisburg-essen-essen-germany-presents-digital-twins-in-smart-factories-concepts-for-efficient-and-flexible-energy-management/",
       "venue_name": "SH-403",
       "venue_address": "Schützenbahn 70",
